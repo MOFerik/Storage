@@ -1,0 +1,7 @@
+C:\Users\deadp\Desktop\Projects\Programms\2 курс - ООП\Хранилище (лр 3)\Хранилище (лр 3)\bin\Debug\Хранилище (лр 3).exe.config
+C:\Users\deadp\Desktop\Projects\Programms\2 курс - ООП\Хранилище (лр 3)\Хранилище (лр 3)\bin\Debug\Хранилище (лр 3).exe
+C:\Users\deadp\Desktop\Projects\Programms\2 курс - ООП\Хранилище (лр 3)\Хранилище (лр 3)\bin\Debug\Хранилище (лр 3).pdb
+C:\Users\deadp\Desktop\Projects\Programms\2 курс - ООП\Хранилище (лр 3)\Хранилище (лр 3)\obj\Debug\Хранилище (лр 3).csprojAssemblyReference.cache
+C:\Users\deadp\Desktop\Projects\Programms\2 курс - ООП\Хранилище (лр 3)\Хранилище (лр 3)\obj\Debug\Хранилище (лр 3).csproj.CoreCompileInputs.cache
+C:\Users\deadp\Desktop\Projects\Programms\2 курс - ООП\Хранилище (лр 3)\Хранилище (лр 3)\obj\Debug\Хранилище (лр 3).exe
+C:\Users\deadp\Desktop\Projects\Programms\2 курс - ООП\Хранилище (лр 3)\Хранилище (лр 3)\obj\Debug\Хранилище (лр 3).pdb
