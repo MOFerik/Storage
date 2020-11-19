@@ -3,6 +3,10 @@ namespace Хранилище__лр_3_
 {
     class Program
     {
+        public class PlanetarySystem
+        {
+        }
+
         public class Planet
         {
             public string name;
