@@ -38,35 +38,69 @@ namespace Хранилище__лр_3_
             {
                 if (id[point] > 100)
                 {
-                    System.Console.WriteLine($"\nStation {stations[id[point]].name} was removed from the planetary system.");
+                    System.Console.WriteLine($"\nStation {stations[id[point] - 100].name} was removed from the planetary system.");
                     stations[--stCount] = null;
-                    id[count--] = 0;
+                    id[point] = 0;
+                    count--;
                 }
-                else
+                else if (id[point] > 0)
                 {
                     System.Console.WriteLine($"\nPlanet {planets[id[point]].name} was removed from the planetary system.");
                     planets[--plCount] = null;
-                    id[count--] = 0;
+                    id[point] = 0;
+                    count--;
                 }
+                else
+                    System.Console.WriteLine($"\nNothing to remove!");
             }
 
             public void current()
             {
                 if (id[point] > 0)
                 {
-                    System.Console.Write($"\nYou are targeting object number {point + 1}:");
+                    System.Console.Write($"\nYou are currently targeting object number {point + 1}:");
                     if (id[point] > 100)
                         System.Console.WriteLine($" station {stations[id[point] - 100].name}.");
                     else
                         System.Console.WriteLine($" planet {planets[id[point]].name}.");
                 }
                 else
-                    System.Console.WriteLine($"\nYou are not targeting any objects.");
+                    System.Console.WriteLine($"\nYou are currently not targeting any objects.");
             }
 
             public void next()
             {
-                
+                point++;
+                if (id[point] > 0)
+                {
+                    System.Console.Write($"\nYou are now targeting object number {point + 1}:");
+                    if (id[point] > 100)
+                        System.Console.WriteLine($" station {stations[id[point] - 100].name}.");
+                    else
+                        System.Console.WriteLine($" planet {planets[id[point]].name}.");
+                }
+                else
+                    System.Console.WriteLine($"\nYou are now not targeting any objects.");
+            }
+
+            public void prev()
+            {
+                if (point > 0)
+                {
+                    point++;
+                    if (id[point] > 0)
+                    {
+                        System.Console.Write($"\nYou are now targeting object number {point + 1}:");
+                        if (id[point] > 100)
+                            System.Console.WriteLine($" station {stations[id[point] - 100].name}.");
+                        else
+                            System.Console.WriteLine($" planet {planets[id[point]].name}.");
+                    }
+                    else
+                        System.Console.WriteLine($"\nYou are now not targeting any objects.");
+                }
+                else
+                    System.Console.WriteLine($"\nYou can not select a non-existing object.");
             }
         }
 
@@ -186,15 +220,14 @@ namespace Хранилище__лр_3_
             Station iss = new Station("ISS-2", true, 3);
             Station uran = new Station("Uranus-1", false, 0);
 
-            plsys.add(earth);
             plsys.add(iss);
+            plsys.add(earth);
             plsys.add(uran);
             plsys.add(mars);
 
             plsys.current();
 
             plsys.del();
-
             plsys.del();
         }
     }
