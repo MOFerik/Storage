@@ -5,6 +5,48 @@ namespace Хранилище__лр_3_
     {
         public class PlanetarySystem
         {
+            private const int n = 100;
+            private Planet[] planets = new Planet[n];
+            private Station[] stations = new Station[n];
+            private int[] id = new int[2 * n];
+
+            private int count = 0;
+            private int plCount = 0;
+            private int stCount = 0;
+
+            public void add(Planet pl)
+            {
+                planets[plCount] = pl;
+                id[count] = ++plCount;
+                count++;
+
+                System.Console.WriteLine($"\nPlanet {pl.name} was added to the planetary system.");
+            }
+
+            public void add(Station st)
+            {
+                stations[stCount] = st;
+                id[count] = ++stCount + 100;
+                count++;
+
+                System.Console.WriteLine($"\nStation {st.name} was added to the planetary system.");
+            }
+
+            public void del()
+            {
+                if (id[count] > 100)
+                {
+                    System.Console.WriteLine($"\nStation {stations[stCount - 1].name} was removed from the planetary system.");
+                    stations[--stCount] = null;
+                    id[count--] = 0;
+                }
+                else
+                {
+                    System.Console.WriteLine($"\nPlanet {planets[plCount - 1].name} was removed from the planetary system.");
+                    planets[--plCount] = null;
+                    id[count--] = 0;
+                }
+            }
         }
 
         public class Planet
