@@ -14,10 +14,12 @@ namespace Хранилище__лр_3_
             private int plCount = 0;
             private int stCount = 0;
 
+            private int point = 0;
+
             public void add(Planet pl)
             {
-                planets[plCount] = pl;
-                id[count] = ++plCount;
+                planets[++plCount] = pl;
+                id[count] = plCount;
                 count++;
 
                 System.Console.WriteLine($"\nPlanet {pl.name} was added to the planetary system.");
@@ -25,8 +27,8 @@ namespace Хранилище__лр_3_
 
             public void add(Station st)
             {
-                stations[stCount] = st;
-                id[count] = ++stCount + 100;
+                stations[++stCount] = st;
+                id[count] = stCount + 100;
                 count++;
 
                 System.Console.WriteLine($"\nStation {st.name} was added to the planetary system.");
@@ -34,18 +36,37 @@ namespace Хранилище__лр_3_
 
             public void del()
             {
-                if (id[count] > 100)
+                if (id[point] > 100)
                 {
-                    System.Console.WriteLine($"\nStation {stations[stCount - 1].name} was removed from the planetary system.");
+                    System.Console.WriteLine($"\nStation {stations[id[point]].name} was removed from the planetary system.");
                     stations[--stCount] = null;
                     id[count--] = 0;
                 }
                 else
                 {
-                    System.Console.WriteLine($"\nPlanet {planets[plCount - 1].name} was removed from the planetary system.");
+                    System.Console.WriteLine($"\nPlanet {planets[id[point]].name} was removed from the planetary system.");
                     planets[--plCount] = null;
                     id[count--] = 0;
                 }
+            }
+
+            public void current()
+            {
+                if (id[point] > 0)
+                {
+                    System.Console.Write($"\nYou are targeting object number {point + 1}:");
+                    if (id[point] > 100)
+                        System.Console.WriteLine($" station {stations[id[point] - 100].name}.");
+                    else
+                        System.Console.WriteLine($" planet {planets[id[point]].name}.");
+                }
+                else
+                    System.Console.WriteLine($"\nYou are not targeting any objects.");
+            }
+
+            public void next()
+            {
+                
             }
         }
 
@@ -159,7 +180,22 @@ namespace Хранилище__лр_3_
 
         static void Main(string[] args)
         {
+            PlanetarySystem plsys = new PlanetarySystem();
+            Planet earth = new Planet("Earth", 'e', true);
+            Planet mars = new Planet("Mars", 'e', false);
+            Station iss = new Station("ISS-2", true, 3);
+            Station uran = new Station("Uranus-1", false, 0);
 
+            plsys.add(earth);
+            plsys.add(iss);
+            plsys.add(uran);
+            plsys.add(mars);
+
+            plsys.current();
+
+            plsys.del();
+
+            plsys.del();
         }
     }
 }
