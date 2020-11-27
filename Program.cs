@@ -87,7 +87,7 @@ namespace Хранилище__лр_3_
             {
                 if (point > 0)
                 {
-                    point++;
+                    point--;
                     if (id[point] > 0)
                     {
                         System.Console.Write($"\nYou are now targeting object number {point + 1}:");
@@ -101,6 +101,47 @@ namespace Хранилище__лр_3_
                 }
                 else
                     System.Console.WriteLine($"\nYou can not select a non-existing object.");
+            }
+
+            public void useScan()
+            {
+                if (id[point] > 0)
+                {
+                    if (id[point] > 100)
+                        stations[id[point] - 100].comm();
+                    else
+                        planets[id[point]].scan();
+                }
+                else
+                    System.Console.WriteLine($"\nYou can not scan a non-existing object.");
+            }
+
+            public bool useLand(bool ld)
+            {
+                if (id[point] > 0)
+                {
+                    if (id[point] > 100)
+                        return stations[id[point] - 100].dock(ld);
+                    else
+                        return planets[id[point]].land(ld);
+                }
+                else
+                    System.Console.WriteLine($"\nYou can not land on a non-existing object.");
+                return false;
+            }
+
+            public bool useTakeoff(bool ld)
+            {
+                if (id[point] > 0)
+                {
+                    if (id[point] > 100)
+                        return stations[id[point] - 100].undock(ld);
+                    else
+                        return planets[id[point]].takeoff(ld);
+                }
+                else
+                    System.Console.WriteLine($"\nYou can not take off from a non-existing object.");
+                return false;
             }
         }
 
@@ -193,11 +234,11 @@ namespace Хранилище__лр_3_
                 return false;
             }
 
-            public bool takeoff(bool landed)
+            public bool undock(bool landed)
             {
                 if (landed)
                 {
-                    System.Console.WriteLine($"\n You have taken off succesfully!");
+                    System.Console.WriteLine($"\n You have undocked succesfully!");
                     return false;
                 }
 
@@ -214,6 +255,7 @@ namespace Хранилище__лр_3_
 
         static void Main(string[] args)
         {
+            bool ld = false;
             PlanetarySystem plsys = new PlanetarySystem();
             Planet earth = new Planet("Earth", 'e', true);
             Planet mars = new Planet("Mars", 'e', false);
@@ -226,6 +268,13 @@ namespace Хранилище__лр_3_
             plsys.add(mars);
 
             plsys.current();
+            plsys.next();
+            plsys.next();
+            plsys.prev();
+
+            plsys.useScan();
+            ld = plsys.useLand(ld);
+            ld = plsys.useTakeoff(ld);
 
             plsys.del();
             plsys.del();
